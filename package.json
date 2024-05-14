@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
     "@cucumber/cucumber": "^10.7.0",
     "@playwright/test": "^1.44.0",
     "cucumber-html-reporter": "^7.1.1",
