@@ -1,4 +1,4 @@
-import {Given, Then, When} from '@cucumber/cucumber';
+import {AfterStep, Given, Then, When} from '@cucumber/cucumber';
 import {APIResponse, expect} from 'playwright/test';
 import {BodyLogin} from "../endpoint/ServicioDeAutenticacion/ServicioDeAutenticacion_Body";
 import Database from "../commons/database_manager";
@@ -25,17 +25,16 @@ let respuesta: APIResponse;
 let resAsignar: APIResponse;
 let resAuth: APIResponse;
 
-Given(`que soy un usuario de GDE tipificado con referencia y referencia_detalle {string} {string} {string}`, (cp: string, user: string, pass: string) => {
+Given(`Modificar con referencia_detalle que soy un usuario de GDE tipificado con referencia y referencia_detalle {string} {string} {string}`, (cp: string, user: string, pass: string) => {
     // [Given] Sets up the initial state of the system.
     console.log(cp)
     login.cambioUsuarioYcontrasena(user, pass);
 });
 
-When(`en la api cambio de valor de GDE, envio una referencia y referencia_detalle pertenecientes a una guia con nivel de servicio veintidos estado diferente a recibir por coordinadora, antes de autorizar a carga de trabajo, con el campo valor mayor que cero {string} {string} {int} {int}`, async (referencia: string, referencia_detalle: string, valor: number, autorizada: number) => {
+When(`Modificar con referencia_detalle en la api cambio de valor de GDE, envio una referencia y referencia_detalle pertenecientes a una guia con nivel de servicio veintidos estado diferente a recibir por coordinadora, antes de autorizar a carga de trabajo, con el campo valor mayor que cero {string} {string} {int} {int}`, async (referencia: string, referencia_detalle: string, valor: number, autorizada: number) => {
     // [When] Describes the action or event that triggers the scenario.
     setTimeout(async () => {
-        const getCodigoRemision = await db.getNivelServicioByReferenciaYReferenciaDetalle(referencia, [referencia_detalle]);
-        console.log(getCodigoRemision.rows[0].codigo_remision, '***************************');
+        const getCodigoRemision = await db.getNivelServicioByReferenciaYReferenciaDetalle(referencia, referencia_detalle);
         const codigo_remision = getCodigoRemision.rows[0].codigo_remision;
         const consultaRemision = await db.getIdRemision(codigo_remision);
         const consultaNivelServicio = await db.getNivelServicio(consultaRemision.rows[0].id_remision);
@@ -126,8 +125,10 @@ When(`en la api cambio de valor de GDE, envio una referencia y referencia_detall
         }
     }, 2000);
 });
-
-Then(`se realiza el respectivo proceso de modificar el valor del recaudo en la tabla recaudos campo valor_total por el nuevo valor asignado y en la tabla generacion_rotulos campo recaudo por el nuevo valor asignado. Estas dos tablas pertenecientes a la base de datos CM Testing ciento veinte, a su vez se inserta la guia en la coleccion llamada cambios_valor_agw del proyecto cm_guias_test de firestore, con el campo llamado estado igual a pendiente y cuando el reloj marque un minuto terminado en cero o en cinco, se correra una tarea que realizara el cambio del valor a recaudar en la tabla agw_recaudos campo valor, esta tabla en la base de datos de sandbox_agw. reflejando por ultimo una respuesta de con el estado Recaudo actualizado, el valorAnterior del RCE y el Valor Nuevo Si el cliente esta tipificado codigo_remision devuelve el campo codigoRemision con el numero de guia y los campos referencia y referenciaDetalle vacios, si el cliente es tipificado referencia devuelve el campo codigoRemision con el numero de guia, el campo referencia con la referencia de la guia la cual se envia en el body de la api, y el campo referenciaDetalle vacio, si el cliente es tipificado referencia y referenciaDetalle devuelve el campo codigoRemision con el numero de guia, el campo referencia con la referencia que se envia en el body de la api, y el campo referenciaDetalle con la referenciaDetalle que se envia en el body de la api {string} {int}`, async (res: string, status: number) => {
+AfterStep(async () => {
+    await new Promise(resolve => setTimeout(resolve, 2000));
+})
+Then(`Modificar con referencia_detalle se realiza el respectivo proceso de modificar el valor del recaudo en la tabla recaudos campo valor_total por el nuevo valor asignado y en la tabla generacion_rotulos campo recaudo por el nuevo valor asignado. Estas dos tablas pertenecientes a la base de datos CM Testing ciento veinte, a su vez se inserta la guia en la coleccion llamada cambios_valor_agw del proyecto cm_guias_test de firestore, con el campo llamado estado igual a pendiente y cuando el reloj marque un minuto terminado en cero o en cinco, se correra una tarea que realizara el cambio del valor a recaudar en la tabla agw_recaudos campo valor, esta tabla en la base de datos de sandbox_agw. reflejando por ultimo una respuesta de con el estado Recaudo actualizado, el valorAnterior del RCE y el Valor Nuevo Si el cliente esta tipificado codigo_remision devuelve el campo codigoRemision con el numero de guia y los campos referencia y referenciaDetalle vacios, si el cliente es tipificado referencia devuelve el campo codigoRemision con el numero de guia, el campo referencia con la referencia de la guia la cual se envia en el body de la api, y el campo referenciaDetalle vacio, si el cliente es tipificado referencia y referenciaDetalle devuelve el campo codigoRemision con el numero de guia, el campo referencia con la referencia que se envia en el body de la api, y el campo referenciaDetalle con la referenciaDetalle que se envia en el body de la api {string} {int}`, async (res: string, status: number) => {
     // [Then] Describes the expected outcome or result of the scenario.
     expect(respuesta.status()).toBe(status);
     expect(resAsignar.status()).toBe(status);
