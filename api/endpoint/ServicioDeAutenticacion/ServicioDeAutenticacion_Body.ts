@@ -15,7 +15,7 @@ export class BodyLogin {
     return JSON.stringify(this.body_login);
   }
 
-  cambioUsuarioYcontraseña(usuario: string, clave: string) {
+  cambioUsuarioYcontrasena(usuario: string, clave: string) {
     this.body_login.usuario = usuario;
     this.body_login.clave = clave;
   }

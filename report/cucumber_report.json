@@ -1,0 +1,84 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "hu39455-crear-los-diferentes-escenarios-para-automatizar-las-pruebas;casos-de-prueba-modificación-rce-guias-recogidas-por-coordinadora",
+        "keyword": "Scenario Outline",
+        "line": 11,
+        "name": "Casos de prueba Modificación RCE Guias recogidas por Coordinadora",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 315340799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "que soy un usuario de GDE tipificado con codigo_remision \"TC1 Verificar que se modifique el RCE a una guia con nivel de servicio 22 - antes de autorizar\" \"pruebas.admin\" \"Admin26200\"",
+            "match": {
+              "location": "api\\Steps\\modificarRCE.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4009141398
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "en la api cambio de valor de GDE, envio una guia con nivel de servicio veintidos estado diferente a recibir por coordinadora, antes de autorizar a carga de trabajo, con la propiedad valor mayor que cero \"73940728542\" 12000 0",
+            "match": {
+              "location": "api\\Steps\\modificarRCE.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4016596799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "se realiza el respectivo proceso de modificar el valor del recaudo en la tabla recaudos campo valor_total por el nuevo valor asignado y en la tabla generacion_rotulos campo recaudo por el nuevo valor asignado. Estas dos tablas pertenecientes a la base de datos CM Testing ciento veinte, a su vez se inserta la guia en la coleccion llamada cambios_valor_agw del proyecto cm_guias_test de firestore, con el campo llamado estado igual a pendiente y cuando el reloj marque un minuto terminado en cero o en cinco, se correra una tarea que realizara el cambio del valor a recaudar en la tabla agw_recaudos campo valor, esta tabla en la base de datos de sandbox_agw. reflejando por ultimo una respuesta de con el estado Recaudo actualizado, el valorAnterior del RCE y el Valor Nuevo Si el cliente esta tipificado codigo_remision devuelve el campo codigoRemision con el numero de guia y los campos referencia y referenciaDetalle vacios, si el cliente es tipificado referencia devuelve el campo codigoRemision con el numero de guia, el campo referencia con la referencia de la guia la cual se envia en el body de la api, y el campo referenciaDetalle vacio, si el cliente es tipificado referencia y referenciaDetalle devuelve el campo codigoRemision con el numero de guia, el campo referencia con la referencia que se envia en el body de la api, y el campo referenciaDetalle con la referenciaDetalle que se envia en el body de la api \"Recaudo Actualizado\" 200",
+            "match": {
+              "location": "api\\Steps\\modificarRCE.ts:116"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4029493899
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 52634200
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Modificacion",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "hu39455-crear-los-diferentes-escenarios-para-automatizar-las-pruebas",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "HU39455 Crear los diferentes escenarios para automatizar las pruebas",
+    "tags": [],
+    "uri": "api\\features\\modificarRCE.feature"
+  }
+]

@@ -14,11 +14,7 @@ let mainURL = "";
 export const db = Database.getInstance();
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 Before({ tags: "@Ignore" }, async () => "skipped" as any);
-Before({ tags: "@ListarVias or @listarCiudades or @ListarSoluciones or @EjecutarTodos or @DetalleDeRegistroDeUnaSolucion or @listarHistoricoNovedades or @ConsultarSolucionesYRechazos" }, async () => {
-  mainURL = "https://apiv2-test.coordinadora.com";
-  await manager.initialize("chrome", mainURL);
-});
-Before({ tags: "@Modificacion" }, async () => {
+Before({ tags: "@ModificacionConReferencia or @Modificacion or @ModificacionConReferenciaDetalle" }, async () => { // solo 7 tags
   mainURL = "https://apiv2-test.coordinadora.com/guias/";
   await manager.initialize("chrome", mainURL);
 });
