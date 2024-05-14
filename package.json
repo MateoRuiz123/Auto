@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx cucumber-js -p test_api --format json:report/cucumber_report.json --tags @Modificacion --publish",
+    "dev": "npx cucumber-js -p test_api --format json:report/cucumber_report.json --tags @ModificacionConReferenciaDetalle --publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
