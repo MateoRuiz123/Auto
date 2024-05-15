@@ -22,6 +22,10 @@ Before({ tags: "@Agregar or @AgregarConReferencia or @AgregarConReferenciaDetall
   mainURL = "https://apiv2-test.coordinadora.com/guias/";
   await manager.initialize("chrome", mainURL);
 });
+Before({ tags: "@CodigoRemision or @tipificacionUps or @tipificacionCuerosVelez or @ErroresControlados" }, async () => { // solo 7 tags
+  mainURL = "https://apiv2-test.coordinadora.com/guias/";
+  await manager.initialize("chrome", mainURL);
+});
 Given("abre la pagina {string}", async (string) => {
   await manager.navigate(string);
 });
