@@ -1,8 +1,8 @@
-import {AfterStep, Given, Then, When} from '@cucumber/cucumber';
-import {APIResponse, expect} from 'playwright/test';
-import {BodyLogin} from "../endpoint/ServicioDeAutenticacion/ServicioDeAutenticacion_Body";
+import { AfterStep, Given, Then, When } from '@cucumber/cucumber';
+import { APIResponse, expect } from 'playwright/test';
+import { BodyLogin } from "../endpoint/ServicioDeAutenticacion/ServicioDeAutenticacion_Body";
 import Database from "../commons/database_manager";
-import {BodyTipificacion} from "../endpoint/ServicioDeTipificacion/Tipificacion_Body";
+import { BodyTipificacion } from "../endpoint/ServicioDeTipificacion/Tipificacion_Body";
 import PeticionTipificacion from "../endpoint/ServicioDeTipificacion/Tipificacion_Request";
 import BodyAsignacion from "../endpoint/ServicioDeAsignacion/ServicioAsignacion_body";
 import PeticionCrearAsignacion from "../endpoint/ServicioDeAsignacion/ServicioAsignacion_request";
@@ -31,7 +31,7 @@ Given(`Modificar con referencia_detalle que soy un usuario de GDE tipificado con
     login.cambioUsuarioYcontrasena(user, pass);
 });
 
-When(`Modificar con referencia_detalle en la api cambio de valor de GDE, envio una referencia y referencia_detalle pertenecientes a una guia con nivel de servicio veintidos estado diferente a recibir por coordinadora, antes de autorizar a carga de trabajo, con el campo valor mayor que cero {string} [{string}] {int} {int}`, async (referencia: string, referencia_detalle: string[], valor: number, autorizada: number) => {
+When(`Modificar con referencia_detalle en la api cambio de valor de GDE, envio una referencia y referencia_detalle pertenecientes a una guia con nivel de servicio veintidos estado diferente a recibir por coordinadora, antes de autorizar a carga de trabajo, con el campo valor mayor que cero {string} [{string}] {int} {int}`, async (referencia: string, referencia_detalle, valor: number, autorizada: number) => {
     // [When] Describes the action or event that triggers the scenario.
     setTimeout(async () => {
         const getCodigoRemision = await db.getNivelServicioByReferenciaYReferenciaDetalle(referencia, referencia_detalle);
@@ -62,7 +62,7 @@ When(`Modificar con referencia_detalle en la api cambio de valor de GDE, envio u
                 BodyAntesDeAutorizar.CambiarIDPeticion(asignarIdPeticion);
 
                 bodyTipificacion.CambiarReferencia(referencia);
-                bodyTipificacion.CambiarReferenciaDetalle(referencia_detalle);
+                bodyTipificacion.CambiarReferenciaDetalle([referencia_detalle]);
                 bodyTipificacion.CambiarValor(valor);
 
                 BodyAuth.CambiarCodigoRemision(codigo_remision);
@@ -101,7 +101,7 @@ When(`Modificar con referencia_detalle en la api cambio de valor de GDE, envio u
                 BodyAntesDeAutorizar.CambiarIDPeticion(asignarIdPeticion);
 
                 bodyTipificacion.CambiarReferencia(referencia);
-                bodyTipificacion.CambiarReferenciaDetalle(referencia_detalle);
+                bodyTipificacion.CambiarReferenciaDetalle([referencia_detalle]);
                 bodyTipificacion.CambiarValor(valor);
 
                 console.log(BodyAntesDeAutorizar.toJSON());
