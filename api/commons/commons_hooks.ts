@@ -18,6 +18,10 @@ Before({ tags: "@ModificacionConReferencia or @Modificacion or @ModificacionConR
   mainURL = "https://apiv2-test.coordinadora.com/guias/";
   await manager.initialize("chrome", mainURL);
 });
+Before({ tags: "@Agregar" }, async () => { // solo 7 tags
+  mainURL = "https://apiv2-test.coordinadora.com/guias/";
+  await manager.initialize("chrome", mainURL);
+});
 Given("abre la pagina {string}", async (string) => {
   await manager.navigate(string);
 });
