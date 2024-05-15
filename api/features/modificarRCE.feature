@@ -9,8 +9,8 @@ Feature: HU39455 Crear los diferentes escenarios para automatizar las pruebas
     Examples:
       | cp                                                                                               | usuario         | contrasena   | codigo_remision | valor | mensaje               | status | autorizada |
       | "TC1 Verificar que se modifique el RCE a una guia con nivel de servicio 22 - antes de autorizar" | "pruebas.admin" | "Admin26200" | "73940728542"   | 12000 | "Recaudo Actualizado" | 200    | 0          |
-      # | "TC2 Verificar que se modifique el RCE a una guia con nivel de servicio 105 - antes de autorizar" | "pruebas.admin" | "Admin26200" | "73940728536"   | 125000 | "Recaudo Actualizado" |    200 |          0 |
-      # | "TC3 Verificar que se modifique el RCE a una guia con nivel de servicio 106 - antes de autorizar" | "pruebas.admin" | "Admin26200" | "73940728545"   | 125000 | "Recaudo Actualizado" | 200    | 0          |
-      # | "TC4 Verificar que se modifique el RCE a una guia con nivel de servicio 22 - autorizada"         | "pruebas.admin" | "Admin26200" | "73940728542"   | 125000 | "Recaudo Actualizado" | 200    | 1          |
-      # | "TC5 Verificar que se modifique el RCE a una guia con nivel de servicio 105 - autorizada"        | "pruebas.admin" | "Admin26200" | "73940728535"   | 125000 | "Recaudo Actualizado" | 200    | 1          |
-      # | "TC6 Verificar que se modifique el RCE a una guia con nivel de servicio 106 - autorizada"        | "pruebas.admin" | "Admin26200" | "73940728546"   | 125000 | "Recaudo Actualizado" | 200    | 1          |
+      | "TC2 Verificar que se modifique el RCE a una guia con nivel de servicio 105 - antes de autorizar" | "pruebas.admin" | "Admin26200" | "73940728536"   | 125000 | "Recaudo Actualizado" |    200 |          0 |
+      | "TC3 Verificar que se modifique el RCE a una guia con nivel de servicio 106 - antes de autorizar" | "pruebas.admin" | "Admin26200" | "73940728545"   | 125000 | "Recaudo Actualizado" | 200    | 0          |
+      | "TC4 Verificar que se modifique el RCE a una guia con nivel de servicio 22 - autorizada"         | "pruebas.admin" | "Admin26200" | "73940728542"   | 125000 | "Recaudo Actualizado" | 200    | 1          |
+      | "TC5 Verificar que se modifique el RCE a una guia con nivel de servicio 105 - autorizada"        | "pruebas.admin" | "Admin26200" | "73940728535"   | 125000 | "Recaudo Actualizado" | 200    | 1          |
+      | "TC6 Verificar que se modifique el RCE a una guia con nivel de servicio 106 - autorizada"        | "pruebas.admin" | "Admin26200" | "73940728546"   | 125000 | "Recaudo Actualizado" | 200    | 1          |
