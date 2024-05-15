@@ -14,7 +14,7 @@ let mainURL = "";
 export const db = Database.getInstance();
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 Before({ tags: "@Ignore" }, async () => "skipped" as any);
-Before({ tags: "@ModificacionConReferencia or @Modificacion or @ModificacionConReferenciaDetalle" }, async () => { // solo 7 tags
+Before({ tags: "@ModificacionConReferencia or @Modificacion or @ModificacionConReferenciaDetalle or @Eliminacion or @EliminarConReferencia or @EliminarConReferenciaDetalle" }, async () => { // solo 7 tags
   mainURL = "https://apiv2-test.coordinadora.com/guias/";
   await manager.initialize("chrome", mainURL);
 });
