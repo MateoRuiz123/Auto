@@ -20,7 +20,7 @@ When("se realiza la consulta de la guia con referencia {string} {int}", async (s
         bodyTipificacion.CambiarValor(int);
         console.log(bodyTipificacion.toJSON());
         console.log(login.toJSON());
-        res = await PeticionModificarValor.modificarTipificacionCodigoRemision(
+        res = await PeticionModificarValor.MODIFICAR_AGREGAR_RCE(
             bodyTipificacion.toJSON(),
             login.toJSON()
         );
